@@ -56,6 +56,8 @@ public class EmployeeController {
     public String addEmployee(@PathVariable("id_url") int id, Model model) {
 
         DepartmentDTO departmentDTO = departmentService.findDepartmentById(id);
+        departmentDTO.setNumberOfEmployees(departmentDTO.getNumberOfEmployees()+1);
+        departmentService.saveDepartment(departmentDTO);
 
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setDepartment(departmentMapper.mapToDepartment(departmentService.findDepartmentById(id)));
@@ -85,10 +87,6 @@ public class EmployeeController {
                                    EmployeeDTO employeeDTO) {
 
         employeeService.saveEmployee(employeeDTO);
-
-        DepartmentDTO departmentDTO = departmentService.findDepartmentById(id);
-        departmentDTO.setNumberOfEmployees(departmentDTO.getNumberOfEmployees()+1);
-        departmentService.saveDepartment(departmentDTO);
 
         return String.format("redirect:/department/%d",id);
 
