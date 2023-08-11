@@ -31,14 +31,14 @@
 - After clicking Enter button you will be redirected to login page (http://localhost:8080/login)
 - There are 2 accounts, one for user and one for admin. The difference between user and admin is that user can only view the contents from admin panel, while the admin can do all CRUD operations.
 
-  <p align="center">(http://localhost:8080/home)</p>
+  <p align="left">(http://localhost:8080/home)</p>
   <img src="images/homePage.png" alt="homePage" width="1000" height="500" align="center">
-  <p align="center">(http://localhost:8080/login)</p>
+  <p align="left">(http://localhost:8080/login)</p>
   <img src="images/loginPage.png" alt="loginPage" width="1000" height="500" align="center">
-  <p align="center">(http://localhost:8080/departmentOverview)</p>
+  <p align="left">(http://localhost:8080/departmentOverview)</p>
   <img src="images/departmentOverview.png" alt="departmentOverview" width="1000" height="500" align="center">
-  <p align="center">(http://localhost:8080/employeeOverview)</p>
+  <p align="left">(http://localhost:8080/employeeOverview)</p>
   <img src="images/employeeOverview.png" alt="employeeOverview" width="1000" height="500" align="center">
-  <p align="center">(http://localhost:8080/department/add)</p>
+  <p align="left">(http://localhost:8080/department/add)</p>
   <img src="images/addDepartment.png" alt="addDepartment" width="1000" height="500" align="center">
   <p align="right">(<a href="#readme-top">back to top</a>)</p>
