@@ -12,9 +12,11 @@
 <h2>Built With</h2> 
 
 <ul>
+  <li>Java version 20</li>
   <li>SpringBoot</li>
   <li>SpringSecurity</li>
   <li>Thymeleaf</li>
+  <li>Lombok</li>
   <li>HTML</li>
   <li>CSS</li>
   <li>Bootstrap</li>
