@@ -1,0 +1,5 @@
+Password mySql: parola
+Account: admin@gmail.com
+	     admin
+Account: user@gmail.com
+	     user		 

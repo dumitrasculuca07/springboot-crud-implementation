@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+    <title>Department Overview</title>
+</head>
+<body>
+
+<div class="topnav">
+  <p th:text="${title}" style="color: white; width:30%; margin-left: 50px;"></p>
+  <div style="width:70%;"></div>
+
+  <div class="dropdown">
+    <p class="p-dropdown">Account</p>
+    <div class="dropdown-content">
+     <a th:href="@{/logout}"> <button class="btn3">Logout</button></a>
+    </div>
+  </div>
+</div>
+
+
+<header class="header" style="margin: 20px;" th:text="${title}">
+</header>
+<div> <a th:href="@{/department/add}">
+  <button class="btn5">Add new department</button>
+</a></div>
+
+<div>
+  <table th:if="${departments != 'null'}">
+    <thead>
+    <td style="width: 10%;">Id</td>
+    <td style="width: 30%;">Name</td>
+    <td style="width: 10%;">Code</td>
+    <td style="width: 30%;">Number of Employees</td>
+    <td style="width: 20%;">Actions</td>
+    </thead>
+    <tbody>
+    <tr th:each="department, iStat : ${departments}">
+      <td  th:text="${iStat.index+1}"/>
+      <td  th:text="${department.name}"/>
+      <td  th:text="${department.code}"></td>
+      <td  th:text="${department.numberOfEmployees}"></td>
+      <td>
+        <div class="buttons">
+
+        <a th:href="@{/department/{id_url}(id_url=${department.id})}">
+        <button class="btn2" style="margin: 5px">VIEW</button>
+        </a>
+        <p></p>
+        <a th:href="@{/department/{id_url}/edit(id_url=${department.id})}">
+          <button class="btn3" style="margin: 5px">EDIT</button>
+        </a>
+        <p></p>
+        <a th:href="@{/department/{id_url}/delete(id_url=${department.id})}">
+          <button class="btn4" style="margin: 5px">DELETE</button>
+        </a>
+
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>

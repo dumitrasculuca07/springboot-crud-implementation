@@ -1,0 +1,79 @@
+DROP TABLE IF EXISTS t_employee;
+DROP TABLE IF EXISTS t_department;
+DROP TABLE IF EXISTS t_role;
+DROP TABLE IF EXISTS t_user;
+DROP TABLE IF EXISTS t_user_roles;
+
+CREATE TABLE t_role (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE t_user (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE t_user_roles (
+    user_id BIGINT NOT NULL,
+    role_id BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES t_user(id),
+    FOREIGN KEY (role_id) REFERENCES t_role(id)
+);
+
+-- Creați tabelele
+CREATE TABLE t_department (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    code VARCHAR(255),
+    number_of_employees INT
+);
+
+CREATE TABLE t_employee (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(255),
+    lastname VARCHAR(255),
+    id_department INT,
+    FOREIGN KEY (id_department) REFERENCES t_department(id)
+);
+
+INSERT INTO t_department (name, code, number_of_employees)
+VALUES ('Department 1', 'D1', 10),
+       ('Department 2', 'D2', 10),
+       ('Department 3', 'D3', 10);
+
+INSERT INTO t_employee (firstname, lastname, id_department)
+VALUES ('John', 'Doe', 1),
+       ('Jane', 'Doe', 1),
+       ('Bob', 'Smith', 1),
+       ('Alice', 'Smith', 1),
+       ('Charlie', 'Brown', 1),
+       ('Lucy', 'Brown', 1),
+       ('Tom', 'Jones', 1),
+       ('Sally', 'Jones', 1),
+       ('Harry', 'Potter', 1),
+       ('Hermione', 'Granger', 1),
+       ('Ronald', 'Weasley', 2),
+       ('Ginny', 'Weasley', 2),
+       ('Neville', 'Longbottom', 2),
+       ('Luna', 'Lovegood', 2),
+       ('Draco', 'Malfoy', 2),
+       ('Pansy', 'Parkinson', 2),
+       ('Severus', 'Snape', 2),
+       ('Minerva', 'McGonagall', 2),
+       ('Albus', 'Dumbledore', 2),
+       ('Rubeus','Hagrid' ,2 ),
+       ('Clark','Kent' ,3 ),
+       ('Bruce','Wayne' ,3 ),
+       ('Peter','Parker' ,3 ),
+       ('Tony','Stark' ,3 ),
+       ('Steve','Rogers' ,3 ),
+       ('Natasha','Romanoff' ,3 ),
+       ('Thor','Odinson' ,3 ),
+       ('Bruce','Banner' ,3 ),
+       ('Wanda','Maximoff' ,3 ),
+       ('Vision','Maximoff' ,3 );

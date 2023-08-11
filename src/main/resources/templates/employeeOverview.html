@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  <title>Employee Overview</title>
+</head>
+<body>
+
+<div class="topnav">
+  <p th:text="${title}" style="color: white; width:30%; margin-left: 50px;"></p>
+  <div style="width:70%;"></div>
+
+  <div class="dropdown">
+    <p class="p-dropdown">Account</p>
+    <div class="dropdown-content">
+      <a th:href="@{/logout}"> <button class="btn3">Logout</button></a>
+    </div>
+  </div>
+</div>
+
+<header class="header" style="margin: 20px;" th:text="${title}">
+</header>
+<div style="margin-left: 25px; display: flex;">
+
+  <a th:href="@{/departmentOverview}">
+    <button class="btn2">Home</button>
+  </a>
+  <p></p>
+  <a th:href="@{/department/{id_url}/add(id_url=${department.id})}">
+  <button class="btn5">Add new employee</button>
+  </a>
+
+</div>
+
+<div>
+  <table th:if="${employees != 'null'}">
+    <thead>
+    <td style="width: 10%;">Id</td>
+    <td style="width: 25%;">Firstname</td>
+    <td style="width: 25%;">Lastname</td>
+    <td style="width: 30%;">Department</td>
+    <td style="width: 10%;">Actions</td>
+    </thead>
+    <tbody>
+    <tr th:each="employee, iStat : ${employees}">
+      <td  th:text="${iStat.index+1}"/>
+      <td  th:text="${employee.firstname}"/>
+      <td  th:text="${employee.lastname}"></td>
+      <td  th:text="${employee.department.name}"></td>
+      <td>
+        <div class="buttons">
+
+          <a th:href="@{/department/{id_url}/editEmployee(id_url=${employee.id})}">
+            <button class="btn3" style="margin: 5px">EDIT</button>
+          </a>
+          <p></p>
+          <a th:href="@{/department/{id_url}/deleteEmployee(id_url=${employee.id})}">
+            <button class="btn4" style="margin: 5px">DELETE</button>
+          </a>
+
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+</html>
