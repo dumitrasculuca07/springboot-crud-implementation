@@ -40,7 +40,7 @@ public class DepartmentController {
 
         DepartmentDTO departmentDTO = departmentService.findDepartmentById(id);
         model.addAttribute("department", departmentDTO);
-        model.addAttribute("title", "Edit employee form: ");
+        model.addAttribute("title", "Edit department form: ");
 
         return "departmentForm";
 
@@ -50,7 +50,7 @@ public class DepartmentController {
     public String addDepartment(Model model) {
 
         model.addAttribute("department", new DepartmentDTO());
-        model.addAttribute("title", "Add employee form: ");
+        model.addAttribute("title", "Add department form: ");
 
         return "departmentForm";
 

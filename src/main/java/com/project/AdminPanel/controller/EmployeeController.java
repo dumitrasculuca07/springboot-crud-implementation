@@ -56,14 +56,13 @@ public class EmployeeController {
     public String addEmployee(@PathVariable("id_url") int id, Model model) {
 
         DepartmentDTO departmentDTO = departmentService.findDepartmentById(id);
-        departmentDTO.setNumberOfEmployees(departmentDTO.getNumberOfEmployees()+1);
-        departmentService.saveDepartment(departmentDTO);
 
         EmployeeDTO employeeDTO = new EmployeeDTO();
         employeeDTO.setDepartment(departmentMapper.mapToDepartment(departmentService.findDepartmentById(id)));
 
         model.addAttribute("employee", employeeDTO);
         model.addAttribute("department", departmentDTO);
+        model.addAttribute("title", "Add employee form: ");
 
         return "employeeForm";
 
@@ -74,6 +73,7 @@ public class EmployeeController {
 
         EmployeeDTO employeeDTO = employeeService.findEmployeeById(id);
         model.addAttribute("employee", employeeDTO);
+        model.addAttribute("title", "Edit employee form: ");
 
         return "employeeForm";
 
@@ -85,6 +85,10 @@ public class EmployeeController {
                                    EmployeeDTO employeeDTO) {
 
         employeeService.saveEmployee(employeeDTO);
+
+        DepartmentDTO departmentDTO = departmentService.findDepartmentById(id);
+        departmentDTO.setNumberOfEmployees(departmentDTO.getNumberOfEmployees()+1);
+        departmentService.saveDepartment(departmentDTO);
 
         return String.format("redirect:/department/%d",id);
 
