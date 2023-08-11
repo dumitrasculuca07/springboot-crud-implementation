@@ -1,1 +1,1 @@
-# springboot-crud-implementation
+# Admin Panel Application
